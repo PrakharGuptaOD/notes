@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NumPy Notes</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+    h1, h2, h3 { color: #2C3E50; }
+    pre { background: #f4f4f4; border: 1px solid #ccc; padding: 10px; overflow-x: auto; }
+    code { background: #f4f4f4; padding: 2px 4px; }
+    .section { margin-bottom: 30px; }
+    .analogy { background: #e7f3fe; border-left: 4px solid #2196F3; padding: 10px; margin: 10px 0; }
+    .example { background: #f9f9f9; border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
+    .photo { display: block; margin: 10px auto; max-width: 80%; }
+  </style>
+</head>
+<body>
+  <h1>Comprehensive NumPy Notes</h1>
+  <p>This document provides an in-depth guide on NumPy, one of Python's most powerful libraries for numerical computing. Topics include arrays, differences between NumPy arrays and lists, higher-dimensional arrays, properties, indexing techniques, reshaping, data types, initialization methods, arithmetic operations, matrix operations, vectors, and universal functions (ufuncs).</p>
+
+  <!-- Section: Introduction to NumPy -->
+  <div class="section" id="intro">
+    <h2>1. Introduction to NumPy</h2>
+    <p>NumPy is a fundamental package for scientific computing in Python. It provides support for large, multi-dimensional arrays and matrices, along with a collection of mathematical functions to operate on these arrays efficiently.</p>
+    <img src="https://via.placeholder.com/600x300?text=NumPy+Library" alt="NumPy Library" class="photo">
+  </div>
+
+  <!-- Section: NumPy Arrays vs. Python Lists -->
+  <div class="section" id="arrays-vs-lists">
+    <h2>2. NumPy Arrays vs. Python Lists</h2>
+    <h3>2.1 Python Lists</h3>
+    <p>Python lists are versatile, dynamic arrays that can hold elements of different types. However, they are not optimized for numerical computations.</p>
+    <div class="example">
+      <pre>
+# Python list example
+py_list = [1, 2, 3, 4, 5]
+print(py_list)
+      </pre>
+    </div>
+    <h3>2.2 NumPy Arrays</h3>
+    <p>NumPy arrays are homogeneous, meaning all elements must be of the same type. They allow for efficient vectorized operations, which means operations can be executed on an entire array without the need for explicit loops.</p>
+    <div class="example">
+      <pre>
+import numpy as np
+
+# NumPy array example
+np_array = np.array([1, 2, 3, 4, 5])
+print(np_array)
+      </pre>
+    </div>
+    <p><strong>Key Differences:</strong></p>
+    <ul>
+      <li><strong>Performance:</strong> NumPy arrays are optimized for numerical computations and are much faster than lists for large datasets.</li>
+      <li><strong>Homogeneity:</strong> All elements in a NumPy array are of the same data type, which allows for efficient processing.</li>
+      <li><strong>Functionality:</strong> NumPy provides a wealth of functions for mathematical operations, linear algebra, and more.</li>
+    </ul>
+  </div>
+
+  <!-- Section: Higher-Dimensional Arrays -->
+  <div class="section" id="higher-dim-arrays">
+    <h2>3. Higher-Dimensional Arrays</h2>
+    <p>NumPy supports multi-dimensional arrays (ndarray) which can be used to represent matrices, tensors, and higher-dimensional data.</p>
+    <div class="example">
+      <pre>
+# Create a 2D array (matrix)
+matrix_2d = np.array([[1, 2, 3], [4, 5, 6]])
+print(matrix_2d)
+
+# Create a 3D array
+array_3d = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
+print(array_3d)
+      </pre>
+    </div>
+    <img src="https://via.placeholder.com/600x300?text=Higher-Dimensional+Arrays" alt="Higher-Dimensional Arrays" class="photo">
+  </div>
+
+  <!-- Section: Array Properties -->
+  <div class="section" id="array-properties">
+    <h2>4. Array Properties</h2>
+    <p>Some important properties of NumPy arrays include:</p>
+    <ul>
+      <li><code>ndim</code> - Number of dimensions.</li>
+      <li><code>shape</code> - Tuple of array dimensions.</li>
+      <li><code>size</code> - Total number of elements.</li>
+      <li><code>dtype</code> - Data type of the elements.</li>
+      <li><code>itemsize</code> - Size (in bytes) of each element.</li>
+    </ul>
+    <div class="example">
+      <pre>
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+print("Dimensions:", arr.ndim)
+print("Shape:", arr.shape)
+print("Size:", arr.size)
+print("Data type:", arr.dtype)
+      </pre>
+    </div>
+  </div>
+
+  <!-- Section: Accessing Array Elements and Conditional Indexing -->
+  <div class="section" id="access-index">
+    <h2>5. Accessing Array Elements and Conditional Indexing</h2>
+    <h3>5.1 Basic Indexing</h3>
+    <p>You can access elements using indices and slicing:</p>
+    <div class="example">
+      <pre>
+arr = np.array([10, 20, 30, 40, 50])
+print(arr[0])        # First element
+print(arr[1:4])      # Elements from index 1 to 3
+      </pre>
+    </div>
+    <h3>5.2 Conditional Indexing</h3>
+    <p>Conditional indexing allows filtering elements based on a condition:</p>
+    <div class="example">
+      <pre>
+# Example: Select elements greater than 25
+arr = np.array([10, 20, 30, 40, 50])
+filtered = arr[arr > 25]
+print(filtered)  # Output: [30 40 50]
+      </pre>
+    </div>
+  </div>
+
+  <!-- Section: Mutability, Referencing, and Reshaping -->
+  <div class="section" id="mutability">
+    <h2>6. Mutability, Referencing, and Reshaping</h2>
+    <h3>6.1 Mutability and Referencing</h3>
+    <p>NumPy arrays are mutable, meaning you can change the value of individual elements. They are also referenced by memory, so modifying one view can affect another if not copied explicitly.</p>
+    <div class="example">
+      <pre>
+arr = np.array([1, 2, 3])
+copy_arr = arr  # Both refer to the same object
+arr[0] = 100
+print(copy_arr)  # Output: [100, 2, 3]
+
+# To avoid this, use a copy
+arr = np.array([1, 2, 3])
+copy_arr = arr.copy()
+arr[0] = 100
+print(copy_arr)  # Output: [1, 2, 3]
+      </pre>
+    </div>
+    <h3>6.2 Reshaping</h3>
+    <p>You can change the shape of an array without changing its data using the <code>reshape</code> method.</p>
+    <div class="example">
+      <pre>
+arr = np.array([1, 2, 3, 4, 5, 6])
+reshaped = arr.reshape((2, 3))
+print(reshaped)
+      </pre>
+    </div>
+  </div>
+
+  <!-- Section: Data Types and Changing Data Types -->
+  <div class="section" id="datatypes">
+    <h2>7. Data Types and Changing Data Types</h2>
+    <p>NumPy arrays have a <code>dtype</code> attribute which specifies the type of elements. You can explicitly create arrays with a specific data type and also convert between types.</p>
+    <div class="example">
+      <pre>
+# Creating an integer array
+int_arr = np.array([1, 2, 3], dtype=np.int32)
+print(int_arr.dtype)
+
+# Changing the data type to float
+float_arr = int_arr.astype(np.float64)
+print(float_arr.dtype)
+      </pre>
+    </div>
+  </div>
+
+  <!-- Section: Array Initialization: Zeros, Ones, Range -->
+  <div class="section" id="initialization">
+    <h2>8. Array Initialization Methods</h2>
+    <h3>8.1 Zeros and Ones</h3>
+    <p>NumPy provides functions to create arrays filled with zeros or ones.</p>
+    <div class="example">
+      <pre>
+# Array of zeros
+zeros_arr = np.zeros((3, 4))
+print(zeros_arr)
+
+# Array of ones
+ones_arr = np.ones((2, 5))
+print(ones_arr)
+      </pre>
+    </div>
+    <h3>8.2 Range</h3>
+    <p>You can create arrays with regularly spaced values using <code>arange</code> and <code>linspace</code>.</p>
+    <div class="example">
+      <pre>
+# Using arange: [start, stop) with a specified step
+range_arr = np.arange(0, 10, 2)
+print(range_arr)
+
+# Using linspace: Generates a specified number of evenly spaced samples over an interval
+linspace_arr = np.linspace(0, 1, 5)
+print(linspace_arr)
+      </pre>
+    </div>
+  </div>
+
+  <!-- Section: Arithmetic Operations and NumPy Functions -->
+  <div class="section" id="operations">
+    <h2>9. Arithmetic Operations and NumPy Functions</h2>
+    <p>NumPy supports element-wise arithmetic operations as well as many built-in functions for various computations.</p>
+    <div class="example">
+      <pre>
+# Element-wise arithmetic operations
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+print(a + b)  # [5 7 9]
+print(a * b)  # [ 4 10 18]
+print(a ** 2) # [1 4 9]
+
+# Universal functions (ufuncs)
+print(np.sqrt(a))      # Square root
+print(np.exp(a))       # Exponential
+print(np.log(a))       # Logarithm
+      </pre>
+    </div>
+    <p>These functions operate element-wise and are highly optimized.</p>
+  </div>
+
+  <!-- Section: Matrix Operations -->
+  <div class="section" id="matrix">
+    <h2>10. Matrix Operations</h2>
+    <h3>10.1 Matrix Creation</h3>
+    <p>While NumPy arrays can represent matrices, the <code>np.matrix</code> subclass exists for convenience, though its use is discouraged in favor of 2D arrays.</p>
+    <div class="example">
+      <pre>
+# Creating a matrix using a 2D NumPy array
+matrix = np.array([[1, 2], [3, 4]])
+print(matrix)
+      </pre>
+    </div>
+    <h3>10.2 Matrix Multiplication</h3>
+    <p>You can perform matrix multiplication using the <code>@</code> operator or the <code>dot</code> function.</p>
+    <div class="example">
+      <pre>
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+# Using the @ operator:
+print(A @ B)
+# Using the dot function:
+print(np.dot(A, B))
+      </pre>
+    </div>
+    <h3>10.3 Transpose and Determinants</h3>
+    <p><strong>Transpose:</strong> The transpose of a matrix can be obtained using <code>.T</code>.</p>
+    <div class="example">
+      <pre>
+# Transposing a matrix
+print(matrix.T)
+      </pre>
+    </div>
+    <p><strong>Determinant:</strong> The determinant of a matrix is calculated using <code>np.linalg.det</code>.</p>
+    <div class="example">
+      <pre>
+import numpy as np
+
+det = np.linalg.det(matrix)
+print("Determinant:", det)
+      </pre>
+    </div>
+  </div>
+
+  <!-- Section: Vectors -->
+  <div class="section" id="vectors">
+    <h2>11. Vectors and Vector Operations</h2>
+    <h3>11.1 Vector Creation and Addition</h3>
+    <p>Vectors are 1D arrays. Vector addition is performed element-wise:</p>
+    <div class="example">
+      <pre>
+v1 = np.array([1, 2, 3])
+v2 = np.array([4, 5, 6])
+vector_sum = v1 + v2
+print("Vector Sum:", vector_sum)
+      </pre>
+    </div>
+    <h3>11.2 Dot Product</h3>
+    <p>The dot product computes the scalar product of two vectors. It can be calculated using <code>np.dot</code> or <code>@</code>:</p>
+    <div class="example">
+      <pre>
+dot_product = np.dot(v1, v2)
+print("Dot Product:", dot_product)
+      </pre>
+    </div>
+  </div>
+
+  <!-- Section: Universal Functions (ufuncs) -->
+  <div class="section" id="ufuncs">
+    <h2>12. Universal Functions (ufuncs)</h2>
+    <p>Universal functions (ufuncs) in NumPy are functions that perform element-wise operations on arrays. They are optimized for performance and can handle broadcasting.</p>
+    <div class="example">
+      <pre>
+# Example of a ufunc
+arr = np.array([1, 4, 9, 16])
+sqrt_arr = np.sqrt(arr)
+print("Square roots:", sqrt_arr)
+      </pre>
+    </div>
+    <p>Other common ufuncs include <code>np.sin</code>, <code>np.cos</code>, <code>np.exp</code>, <code>np.log</code> and many more.</p>
+  </div>
+
+  <!-- Section: Conclusion -->
+  <div class="section" id="conclusion">
+    <h2>Conclusion</h2>
+    <p>This guide covered the essentials of NumPy, including array creation, manipulation, and various operations. By understanding the differences between NumPy arrays and Python lists, utilizing advanced indexing, reshaping, matrix operations, and universal functions, you are equipped to handle a vast range of numerical computations efficiently.</p>
+    <p>Practice these concepts by experimenting with different operations and exploring the extensive capabilities of NumPy in your data science or computational projects.</p>
+  </div>
+</body>
+</html>
