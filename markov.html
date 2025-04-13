@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Markov Chain</title>
+  <title>Markov Chain Notes</title>
   <style>
     body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
     h1, h2, h3 { color: #2C3E50; }
@@ -11,468 +11,148 @@
     .section { margin-bottom: 30px; }
     .analogy { background: #e7f3fe; border-left: 4px solid #2196F3; padding: 10px; margin: 10px 0; }
     .example { background: #f9f9f9; border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
+    .photo { display: block; margin: 10px auto; max-width: 80%; }
   </style>
 </head>
 <body>
-  <h1>Comprehensive Python Notes</h1>
-  <p>This document provides in-depth notes on various Python concepts ranging from basic data types and operators to advanced topics such as sorting algorithms and file handling. Each section includes clear explanations, analogies where applicable, and code examples to help illustrate the concepts.</p>
+  <h1>Comprehensive Markov Chain Notes</h1>
+  <p>This document provides detailed notes on Markov Chains, covering core concepts, analogies, examples, and key properties. It is designed to help you understand and solve problems using Markov chains.</p>
 
-  <!-- Section: Python Data Types -->
-  <div class="section" id="data-types">
-    <h2>1. Python Data Types and Their Functions</h2>
-    <p>Python supports various built-in data types which can be broadly classified into:</p>
-    <ul>
-      <li><strong>Numeric Types:</strong> <code>int</code>, <code>float</code>, <code>complex</code></li>
-      <li><strong>Sequence Types:</strong> <code>list</code>, <code>tuple</code>, <code>range</code></li>
-      <li><strong>Text Type:</strong> <code>str</code></li>
-      <li><strong>Mapping Type:</strong> <code>dict</code></li>
-      <li><strong>Set Types:</strong> <code>set</code>, <code>frozenset</code></li>
-      <li><strong>Boolean Type:</strong> <code>bool</code></li>
-      <li><strong>Binary Types:</strong> <code>bytes</code>, <code>bytearray</code>, <code>memoryview</code></li>
-    </ul>
-    <h3>Functions/Methods Associated with Data Types</h3>
-    <ul>
-      <li><code>int()</code>: Converts a number or string to an integer.</li>
-      <li><code>float()</code>: Converts a number or string to a floating-point number.</li>
-      <li><code>str()</code>: Converts an object to a string format.</li>
-      <li><code>len()</code>: Returns the length (number of items) of an object.</li>
-      <li><code>list()</code>: Creates a list from an iterable.</li>
-      <li><code>dict()</code>: Creates a dictionary.</li>
-      <li>For strings: Methods like <code>.upper()</code>, <code>.lower()</code>, <code>.split()</code>, and <code>.replace()</code> help in text manipulations.</li>
-    </ul>
-    <p>Understanding these data types and their associated methods is fundamental for solving various programming tasks in Python.</p>
+  <!-- Section: Markov Chain Concept -->
+  <div class="section" id="concept">
+    <h2>1. Markov Chain Concept</h2>
+    <p>A Markov chain is a stochastic process that transitions from one state to another within a finite or countable set of states. The key characteristic of a Markov chain is that the next state depends only on the current state and not on the sequence of events that preceded it—this is known as the <strong>memoryless</strong> property.</p>
+    <img src="https://via.placeholder.com/600x300?text=Markov+Chain+Diagram" alt="Markov Chain Diagram" class="photo">
   </div>
 
-  <!-- Section: Operators -->
-  <div class="section" id="operators">
-    <h2>2. Operators in Python</h2>
-    
-    <h3>2.1 Logical Operators</h3>
-    <p>Logical operators are used to combine conditional statements:</p>
+  <!-- Section: Analogy -->
+  <div class="section" id="analogy">
+    <h2>2. Analogy</h2>
+    <p>Imagine you are in a city with several bus stops, and at each bus stop you can catch a bus to a limited set of other stops. The bus you take only depends on the stop you're currently at and the schedule available there—your journey does not depend on how you arrived at that stop. In this analogy:</p>
     <ul>
-      <li><code>and</code> – Returns <code>True</code> if both operands are true.</li>
-      <li><code>or</code> – Returns <code>True</code> if at least one operand is true.</li>
-      <li><code>not</code> – Returns <code>True</code> if the operand is false.</li>
+      <li><strong>States</strong> are the bus stops.</li>
+      <li><strong>Transition probabilities</strong> represent the likelihood of catching a bus from one stop to the next.</li>
+      <li>The process is <strong>memoryless</strong> because the next stop only depends on your current stop.</li>
     </ul>
-    <div class="example">
-      <pre>
-a = True
-b = False
-print(a and b)  # False
-print(a or b)   # True
-print(not a)    # False
-      </pre>
-    </div>
-
-    <h3>2.2 Comparison Operators</h3>
-    <p>Comparison operators compare values and return a Boolean result:</p>
-    <ul>
-      <li><code>==</code>: Equal to</li>
-      <li><code>!=</code>: Not equal to</li>
-      <li><code>&gt;</code>: Greater than</li>
-      <li><code>&lt;</code>: Less than</li>
-      <li><code>&gt;=</code>: Greater than or equal to</li>
-      <li><code>&lt;=</code>: Less than or equal to</li>
-    </ul>
-    <div class="example">
-      <pre>
-x = 10
-y = 20
-print(x == y)  # False
-print(x != y)  # True
-print(x &lt; y)  # True
-      </pre>
-    </div>
-
-    <h3>2.3 Arithmetic Operators</h3>
-    <p>Arithmetic operators are used to perform mathematical operations:</p>
-    <ul>
-      <li><code>+</code> : Addition</li>
-      <li><code>-</code> : Subtraction</li>
-      <li><code>*</code> : Multiplication</li>
-      <li><code>/</code> : Division (always returns a float)</li>
-      <li><code>//</code> : Floor division (returns an integer quotient)</li>
-      <li><code>%</code> : Modulus (remainder of a division)</li>
-      <li><code>**</code> : Exponentiation</li>
-    </ul>
-    <h4>Advanced Usage and Data Type Operations</h4>
-    <p>Arithmetic operators can also be applied to various data types:</p>
-    <ul>
-      <li><strong>Strings:</strong> The <code>+</code> operator concatenates strings and <code>*</code> operator replicates them.</li>
-      <li><strong>Lists/Tuples:</strong> Similar concatenation and replication operations apply to lists and tuples.</li>
-    </ul>
-    <div class="example">
-      <pre>
-# Numbers
-a = 5
-b = 3
-print(a + b)    # 8
-print(a ** b)   # 125
-
-# Strings
-s = "Hello"
-print(s + " World")   # "Hello World"
-print(s * 3)          # "HelloHelloHello"
-
-# Lists
-lst = [1, 2, 3]
-print(lst + [4, 5])   # [1, 2, 3, 4, 5]
-print(lst * 2)        # [1, 2, 3, 1, 2, 3]
-      </pre>
-    </div>
-  </div>
-
-  <!-- Section: Control Structures -->
-  <div class="section" id="control-structures">
-    <h2>3. Control Structures in Python</h2>
-
-    <h3>3.1 If-Elif-Else Statement with Analogy</h3>
-    <p>Conditional statements allow you to execute code based on conditions. The <code>if</code>-<code>elif</code>-<code>else</code> structure is akin to making decisions in everyday life. Imagine you’re deciding what to wear:</p>
     <div class="analogy">
       <p>
-        <strong>If:</strong> "If it is raining, then I take an umbrella." <br>
-        <strong>Elif:</strong> "Else, if it is cold, then I wear a jacket." <br>
-        <strong>Else:</strong> "Otherwise, I just wear my regular clothes." 
+        <strong>Analogy:</strong> "Imagine playing a board game where each move only depends on the current square you're on, not on all the previous moves you made."
       </p>
     </div>
+  </div>
+
+  <!-- Section: Components of a Markov Chain -->
+  <div class="section" id="components">
+    <h2>3. Components of a Markov Chain</h2>
+    <h3>3.1 States</h3>
+    <p>The state space is the set of all possible states the process can be in. States can be discrete (e.g., integers, names) and finite or countably infinite.</p>
+    
+    <h3>3.2 Transition Probabilities</h3>
+    <p>Transition probabilities determine the likelihood of moving from one state to another. They are often represented in a <strong>transition matrix</strong> <code>P</code>, where each entry <code>P[i][j]</code> represents the probability of transitioning from state <code>i</code> to state <code>j</code>. The matrix rows sum to 1.</p>
     <div class="example">
       <pre>
-weather = "rainy"
-if weather == "rainy":
-    print("Take an umbrella.")
-elif weather == "cold":
-    print("Wear a jacket.")
-else:
-    print("Wear your regular clothes.")
+# Example of a transition matrix for three states (A, B, and C)
+P = [
+  [0.2, 0.5, 0.3],  # Transitions from State A
+  [0.1, 0.6, 0.3],  # Transitions from State B
+  [0.4, 0.4, 0.2]   # Transitions from State C
+]
       </pre>
     </div>
-
-    <h3>3.2 For Loop</h3>
-    <p>For loops are used for iterating over sequences (like lists, tuples, strings, etc.).</p>
+    
+    <h3>3.3 Initial State Distribution</h3>
+    <p>The initial state distribution indicates the probability of starting in each state. It is expressed as a probability vector that sums to 1.</p>
     <div class="example">
       <pre>
-fruits = ["apple", "banana", "cherry"]
-for fruit in fruits:
-    print(fruit)
+# Example initial distribution for states A, B, and C
+initial_distribution = [0.5, 0.3, 0.2]
       </pre>
     </div>
+    
+    <h3>3.4 Stationary Distribution</h3>
+    <p>A stationary distribution is a probability distribution that remains unchanged after transitions. It satisfies the equation <code>&pi;P = &pi;</code>, where <code>&pi;</code> is the stationary distribution vector. It is useful for long-term predictions.</p>
+    <img src="https://via.placeholder.com/600x300?text=Stationary+Distribution" alt="Stationary Distribution" class="photo">
+  </div>
 
-    <h3>3.3 While Loop</h3>
-    <p>A while loop repeatedly executes as long as a given condition is true.</p>
+  <!-- Section: Properties of Markov Chains -->
+  <div class="section" id="properties">
+    <h2>4. Key Properties of Markov Chains</h2>
+    <ul>
+      <li><strong>Memorylessness (Markov Property):</strong> Future states depend only on the present state.</li>
+      <li><strong>Irreducibility:</strong> A Markov chain is irreducible if it is possible to reach any state from any other state.</li>
+      <li><strong>Aperiodicity:</strong> A state is aperiodic if it can return to itself at irregular times, ensuring the chain does not get trapped in cyclic behavior.</li>
+      <li><strong>Ergodicity:</strong> A chain is ergodic if it is both irreducible and aperiodic, meaning long-term behavior is independent of the starting state.</li>
+      <li><strong>Absorbing States:</strong> States that, once entered, cannot be left.</li>
+    </ul>
+  </div>
+
+  <!-- Section: Steps to Solve a Markov Chain Problem -->
+  <div class="section" id="steps">
+    <h2>5. Steps to Solve a Markov Chain Problem</h2>
+    <ol>
+      <li><strong>Define the State Space:</strong> Identify all possible states.</li>
+      <li><strong>Establish Transition Probabilities:</strong> Construct the transition matrix <code>P</code> that outlines the probabilities of moving between states.</li>
+      <li><strong>Determine the Initial State Distribution:</strong> Specify the starting probabilities for each state.</li>
+      <li><strong>Analyze the Transition Behavior:</strong> Compute the state distribution after <code>n</code> steps using matrix multiplication (<code>initial_distribution * P^n</code>).</li>
+      <li><strong>Find the Stationary Distribution (if applicable):</strong> Solve <code>&pi;P = &pi;</code> subject to the condition that the elements of <code>&pi;</code> sum to 1.</li>
+      <li><strong>Interpret the Results:</strong> Use the computed probabilities to make predictions or decisions based on the Markov chain analysis.</li>
+    </ol>
     <div class="example">
       <pre>
-count = 0
-while count &lt; 5:
-    print("Count is:", count)
-    count += 1
-      </pre>
-    </div>
+# Pseudo-code for computing state distributions after n steps:
 
-    <h3>3.4 Break Statement</h3>
-    <p>The <code>break</code> statement terminates the loop immediately when a specified condition is met.</p>
-    <div class="example">
-      <pre>
-for num in range(10):
-    if num == 5:
-        break
-    print(num)
-      </pre>
-    </div>
+def markov_chain_step(current_distribution, P):
+    # Multiply current_distribution (vector) with transition matrix P
+    return np.dot(current_distribution, P)
 
-    <h3>3.5 Continue Statement</h3>
-    <p>The <code>continue</code> statement skips the rest of the code inside the loop for the current iteration only.</p>
-    <div class="example">
-      <pre>
-for num in range(5):
-    if num == 2:
-        continue
-    print(num)
-      </pre>
-    </div>
+# Example using numpy for 3 steps:
+import numpy as np
 
-    <h3>3.6 Pass Statement</h3>
-    <p>The <code>pass</code> statement is a null operation—it is used as a placeholder in contexts where a statement is syntactically required but no action is needed.</p>
-    <div class="example">
-      <pre>
-def placeholder_function():
-    pass  # To be implemented in future
+# Define the transition matrix P (rows sum to 1)
+P = np.array([
+    [0.2, 0.5, 0.3],
+    [0.1, 0.6, 0.3],
+    [0.4, 0.4, 0.2]
+])
 
-for i in range(3):
-    if i == 1:
-        pass  # Do nothing on i equals 1
-    else:
-        print(i)
+# Define the initial distribution (e.g., state A: 50%, B: 30%, C: 20%)
+initial_distribution = np.array([0.5, 0.3, 0.2])
+
+# Compute the distribution after 3 steps
+n = 3
+distribution_after_n = np.linalg.matrix_power(P, n).dot(initial_distribution)
+print("Distribution after 3 steps:", distribution_after_n)
       </pre>
     </div>
   </div>
 
-  <!-- Section: Comprehensions -->
-  <div class="section" id="comprehensions">
-    <h2>4. Comprehensions in Python</h2>
-    <h3>4.1 List Comprehension</h3>
-    <p>List comprehensions provide a concise way to create lists. The syntax is:</p>
-    <pre><code>[expression for item in iterable if condition]</code></pre>
+  <!-- Section: Example Problem -->
+  <div class="section" id="example-problem">
+    <h2>6. Example Markov Chain Problem</h2>
+    <p>Suppose we have a weather system modeled as a Markov chain with the states: <em>Sunny</em> and <em>Rainy</em>. The transition matrix is given by:</p>
     <div class="example">
       <pre>
-# Example: Squaring numbers in a list
-nums = [1, 2, 3, 4]
-squares = [x**2 for x in nums]
-print(squares)  # Output: [1, 4, 9, 16]
+P = [
+  [0.8, 0.2],  # Sunny to Sunny, Sunny to Rainy
+  [0.4, 0.6]   # Rainy to Sunny, Rainy to Rainy
+]
       </pre>
     </div>
-
-    <h3>4.2 Dictionary Comprehension</h3>
-    <p>Dictionary comprehensions allow you to create dictionaries in a similar manner:</p>
-    <pre><code>{key: value for item in iterable if condition}</code></pre>
-    <div class="example">
-      <pre>
-# Example: Creating a dictionary where key is the number and value is its square
-nums = [1, 2, 3, 4]
-square_dict = {x: x**2 for x in nums}
-print(square_dict)  # Output: {1: 1, 2: 4, 3: 9, 4: 16}
-      </pre>
-    </div>
-  </div>
-
-  <!-- Section: Functions and Recursion -->
-  <div class="section" id="functions">
-    <h2>5. Functions, Recursion, and Related Concepts</h2>
-    
-    <h3>5.1 Defining a Function</h3>
-    <p>Functions encapsulate reusable pieces of code. They are defined using the <code>def</code> keyword:</p>
-    <div class="example">
-      <pre>
-def greet(name):
-    """
-    This function greets the person passed in as parameter.
-    """
-    print(f"Hello, {name}!")
-    
-greet("Alice")
-      </pre>
-    </div>
-
-    <h3>5.2 Return Statement</h3>
-    <p>The <code>return</code> statement allows a function to send a result back to the caller:</p>
-    <div class="example">
-      <pre>
-def add(a, b):
-    return a + b
-    
-result = add(5, 3)
-print(result)  # 8
-      </pre>
-    </div>
-
-    <h3>5.3 Recursion</h3>
-    <p>Recursion is a process where a function calls itself. It's useful for solving problems that can be broken down into smaller, similar sub-problems.</p>
-    <div class="example">
-      <pre>
-def factorial(n):
-    # Base case: if n is 0 or 1, return 1
-    if n in (0, 1):
-        return 1
-    # Recursive call
-    return n * factorial(n - 1)
-
-print(factorial(5))  # Output: 120
-      </pre>
-    </div>
-
-    <h3>5.4 Lambda Functions</h3>
-    <p>Lambda functions are small anonymous functions defined with the <code>lambda</code> keyword. They are useful for simple operations where a formal function is not required.</p>
-    <div class="example">
-      <pre>
-# A lambda function to add two numbers
-add = lambda x, y: x + y
-print(add(2, 3))  # Output: 5
-      </pre>
-    </div>
-
-    <h3>5.5 Fibonacci Series</h3>
-    <p>The Fibonacci series is a sequence where each number is the sum of the two preceding ones. Here’s an example using recursion:</p>
-    <div class="example">
-      <pre>
-def fibonacci(n):
-    if n <= 1:
-        return n
-    return fibonacci(n - 1) + fibonacci(n - 2)
-
-# Print Fibonacci series up to 10 numbers
-for i in range(10):
-    print(fibonacci(i), end=" ")
-      </pre>
-    </div>
-
-    <h3>5.6 *args and **kwargs</h3>
-    <p>*args and **kwargs allow functions to accept an arbitrary number of arguments:</p>
+    <p>If the initial state distribution is <code>[0.6, 0.4]</code> (60% chance Sunny, 40% chance Rainy), we can analyze the weather pattern over the next few days. Calculate the distribution after 2 days and discuss if a stationary distribution exists.</p>
+    <p><strong>Steps:</strong></p>
     <ul>
-      <li><code>*args</code> collects extra positional arguments as a tuple.</li>
-      <li><code>**kwargs</code> collects extra keyword arguments as a dictionary.</li>
+      <li>Determine the initial state distribution: <code>[0.6, 0.4]</code>.</li>
+      <li>Compute <code>P^2</code> (transition probabilities over 2 days) and multiply by the initial distribution.</li>
+      <li>Check if the state distribution converges to a stationary distribution as <code>n</code> increases.</li>
     </ul>
-    <div class="example">
-      <pre>
-def flexible_function(*args, **kwargs):
-    print("Positional arguments:", args)
-    print("Keyword arguments:", kwargs)
-
-flexible_function(1, 2, 3, name="Alice", age=30)
-      </pre>
-    </div>
-  </div>
-
-  <!-- Section: Module Importing and File Handling -->
-  <div class="section" id="modules-files">
-    <h2>6. Importing Modules and File Handling</h2>
-    <h3>6.1 Importing Modules</h3>
-    <p>You can import modules to use functions, classes, and variables defined in other files or libraries. Common ways to import include:</p>
-    <ul>
-      <li><code>import module_name</code></li>
-      <li><code>from module_name import specific_function</code></li>
-      <li><code>import module_name as alias</code></li>
-    </ul>
-    <div class="example">
-      <pre>
-import math
-print(math.sqrt(16))  # Outputs 4.0
-      </pre>
-    </div>
-
-    <h3>6.2 File Handling and Corner Cases</h3>
-    <p>Python provides built-in functions to work with files, such as <code>open()</code> to read and write. Here are the basics and some corner cases:</p>
-    <ul>
-      <li>Always close a file after use. Best practice: use the <code>with</code> statement to handle files automatically.</li>
-      <li>Handle exceptions (such as <code>FileNotFoundError</code> or <code>IOError</code>) to make your program robust.</li>
-      <li>Be cautious with file modes: <code>'r'</code> (read), <code>'w'</code> (write/truncate), <code>'a'</code> (append), and <code>'b'</code> (binary).</li>
-    </ul>
-    <div class="example">
-      <pre>
-# Writing to a file with exception handling
-try:
-    with open("example.txt", "w") as file:
-        file.write("Hello, file handling!")
-except IOError as e:
-    print("An error occurred while handling the file:", e)
-      </pre>
-    </div>
-  </div>
-
-  <!-- Section: Sorting Techniques -->
-  <div class="section" id="sorting">
-    <h2>7. Sorting Techniques and Their Workflow</h2>
-    <p>Sorting is a fundamental operation and there are various techniques available. Each sorting algorithm has its own time complexity, advantages, and disadvantages:</p>
-    
-    <h3>7.1 Bubble Sort</h3>
-    <p><strong>Workflow:</strong> Repeatedly compare adjacent elements and swap them if they are in the wrong order. This process is repeated until no swaps are needed.</p>
-    <p><strong>Time Complexity:</strong> O(n<sup>2</sup>) in the worst and average case.</p>
-    <div class="example">
-      <pre>
-def bubble_sort(arr):
-    n = len(arr)
-    for i in range(n):
-        # Last i elements are already sorted
-        for j in range(0, n - i - 1):
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-    return arr
-      </pre>
-    </div>
-
-    <h3>7.2 Insertion Sort</h3>
-    <p><strong>Workflow:</strong> Build the final sorted array one item at a time, placing each new element into its appropriate position within the sorted portion.</p>
-    <p><strong>Time Complexity:</strong> O(n<sup>2</sup>) worst-case, O(n) best-case (when the list is already sorted).</p>
-    <div class="example">
-      <pre>
-def insertion_sort(arr):
-    for i in range(1, len(arr)):
-        key = arr[i]
-        j = i - 1
-        while j >=0 and key &lt; arr[j] :
-            arr[j+1] = arr[j]
-            j -= 1
-        arr[j+1] = key
-    return arr
-      </pre>
-    </div>
-
-    <h3>7.3 Selection Sort</h3>
-    <p><strong>Workflow:</strong> Repeatedly find the minimum element from the unsorted part and move it to the beginning.</p>
-    <p><strong>Time Complexity:</strong> O(n<sup>2</sup>) for all cases.</p>
-    <div class="example">
-      <pre>
-def selection_sort(arr):
-    n = len(arr)
-    for i in range(n):
-        min_idx = i
-        for j in range(i+1, n):
-            if arr[j] &lt; arr[min_idx]:
-                min_idx = j
-        arr[i], arr[min_idx] = arr[min_idx], arr[i]
-    return arr
-      </pre>
-    </div>
-
-    <h3>7.4 Merge Sort</h3>
-    <p><strong>Workflow:</strong> A divide and conquer algorithm that splits the array into halves, sorts each half, and then merges the sorted halves back together.</p>
-    <p><strong>Time Complexity:</strong> O(n log n) for all cases.</p>
-    <div class="example">
-      <pre>
-def merge_sort(arr):
-    if len(arr) &lt;= 1:
-        return arr
-    mid = len(arr) // 2
-    left = merge_sort(arr[:mid])
-    right = merge_sort(arr[mid:])
-    
-    return merge(left, right)
-
-def merge(left, right):
-    result = []
-    i = j = 0
-    while i &lt; len(left) and j &lt; len(right):
-        if left[i] &lt; right[j]:
-            result.append(left[i])
-            i += 1
-        else:
-            result.append(right[j])
-            j += 1
-    result.extend(left[i:])
-    result.extend(right[j:])
-    return result
-      </pre>
-    </div>
-
-    <h3>7.5 Quick Sort</h3>
-    <p><strong>Workflow:</strong> Another divide and conquer algorithm that selects a 'pivot', partitions the array around the pivot, and recursively sorts the partitions.</p>
-    <p><strong>Time Complexity:</strong> Average-case O(n log n), worst-case O(n<sup>2</sup>) (mitigated by good pivot selection).</p>
-    <div class="example">
-      <pre>
-def quick_sort(arr):
-    if len(arr) &lt;= 1:
-        return arr
-    pivot = arr[len(arr) // 2]
-    left = [x for x in arr if x &lt; pivot]
-    middle = [x for x in arr if x == pivot]
-    right = [x for x in arr if x &gt; pivot]
-    return quick_sort(left) + middle + quick_sort(right)
-
-# Example usage:
-print(quick_sort([3, 6, 8, 10, 1, 2, 1]))
-      </pre>
-    </div>
-
-    <h3>When to Use Which Sorting Algorithm?</h3>
-    <ul>
-      <li><strong>Bubble, Insertion, and Selection Sorts:</strong> Simple to implement and understand; suitable for small datasets or nearly sorted arrays. Insertion sort is particularly efficient for nearly sorted data.</li>
-      <li><strong>Merge Sort and Quick Sort:</strong> Better for larger datasets. Merge sort provides stable O(n log n) performance and is optimal for linked lists or external sorting. Quick sort is often preferred for arrays due to its in-place sorting; however, care must be taken to avoid worst-case performance.</li>
-    </ul>
+    <img src="https://via.placeholder.com/600x300?text=Weather+Markov+Chain" alt="Weather Markov Chain Example" class="photo">
   </div>
 
   <!-- Section: Conclusion -->
   <div class="section" id="conclusion">
     <h2>Conclusion</h2>
-    <p>These detailed notes cover various fundamental and advanced topics in Python, including data types, operators, control flow, comprehensions, function definitions, recursion, modules, lambda expressions, file handling, and sorting techniques. Understanding these concepts is crucial for effective programming and algorithm design in Python.</p>
-    <p>Feel free to refer back to these notes as you practice coding in Python and build more complex applications.</p>
+    <p>Markov chains provide a powerful framework for modeling systems where the future state depends solely on the current state. By understanding the components—states, transition probabilities, initial and stationary distributions—and following a systematic approach to solve problems, you can apply Markov chains to various real-world scenarios such as weather prediction, board games, queueing systems, and more.</p>
+    <p>Practice by setting up your own Markov chain models and exploring their long-term behavior using simulation or matrix computations.</p>
   </div>
 </body>
 </html>
