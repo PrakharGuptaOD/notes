@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Module A Notes - Minor in AI</title>
+  <!-- Importing Cormorant Infant font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cormorant Infant', serif;
+      background: #f4f4f4;
+      color: #333;
+    }
+    .header {
+      background: #333;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+    }
+    .header .greeting {
+      font-size: 2rem;
+    }
+    .header .description {
+      text-align: right;
+      line-height: 1.4;
+    }
+    .header .description h2 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+    .header .description p {
+      margin: 5px 0 0 0;
+      font-size: 1rem;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: #333;
+    }
+    .card p {
+      font-size: 1rem;
+      margin: 10px 0 20px 0;
+      line-height: 1.5;
+    }
+    .card a {
+      text-decoration: none;
+      color: #fff;
+      background: #333;
+      padding: 10px 15px;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    .card a:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="greeting">
+      Hello, User!
+    </div>
+    <div class="description">
+      <h2>Notes for Module A</h2>
+      <p>These are short notes for revision purposes created by Prakhar (Batch 1) student.</p>
+    </div>
+  </header>
 
+  <!-- Main Content Section -->
+  <div class="container">
+    <div class="card-container">
+      <!-- Card 1: Basic Python -->
+      <div class="card">
+        <h3>Basic Python</h3>
+        <p>Fundamental concepts and practical examples of Python programming for beginners.</p>
+        <a href="#basic-python" target="_blank">Visit Page</a>
+      </div>
+      <!-- Card 2: Markov Chain -->
+      <div class="card">
+        <h3>Markov Chain</h3>
+        <p>Detailed notes and examples on Markov Chain theory and applications.</p>
+        <a href="#markov-chain" target="_blank">Visit Page</a>
+      </div>
+      <!-- Card 3: NumPy -->
+      <div class="card">
+        <h3>NumPy</h3>
+        <p>Concepts on efficient numerical computing and array manipulations using NumPy.</p>
+        <a href="#numpy" target="_blank">Visit Page</a>
+      </div>
+      <!-- Card 4: Statistics and Matplotlib -->
+      <div class="card">
+        <h3>Statistics &amp; Matplotlib</h3>
+        <p>Learn statistical methods, data distribution, and data visualization with Matplotlib.</p>
+        <a href="#statistics-matplotlib" target="_blank">Visit Page</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
