@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
+      body{
+        font-family: 'Poppins', sans-serif;
+      }
       .button{
         text-decoration: none;
         color: #fff;
@@ -45,12 +49,12 @@
     </ul>
   </div>
   <div class="analogy" id="seq_analogy">
-    <p><strong>Imagine</strong> you have a string and you're carefully threading colorful beads onto it, one by one. Each bead you add is not random — its color and placement depend on the beads that came before it. If you suddenly put a completely different or broken bead in the middle, the whole design looks odd. In the same way, a sequence is a series where the order matters. Just like a beautiful necklace depends on the proper arrangement of beads, a sentence or a musical tune depends on the proper sequence of words or notes. You can’t just place the last bead first or skip the middle ones — every bead adds meaning step by step, just like in language, music, or time-series data where each step depends on the previous ones. This is the essence of a sequence — a meaningful pattern built one piece at a time, where the past affects the future.</p>
+    <strong>Imagine</strong> you have a string and you're carefully threading colorful beads onto it, one by one. Each bead you add is not random — its color and placement depend on the beads that came before it. If you suddenly put a completely different or broken bead in the middle, the whole design looks odd. In the same way, a sequence is a series where the order matters. Just like a beautiful necklace depends on the proper arrangement of beads, a sentence or a musical tune depends on the proper sequence of words or notes. You can’t just place the last bead first or skip the middle ones — every bead adds meaning step by step, just like in language, music, or time-series data where each step depends on the previous ones. This is the essence of a sequence — a meaningful pattern built one piece at a time, where the past affects the future.
   </div>
 
   <!-- Section: Sequence Models -->
   <div class="section" id="sequence models">
-    <h2>What are Sequence Models</h2>
+    <h2>What are Sequence Models?</h2>
     <p>Sequence models are machine learning models designed to understand, process, or generate data where the order matters.</p>
     <p>Unlike regular models that treat inputs independently, sequence models remember what came before and use that to make better predictions.</p>
     <p>They are specially built to handle sequential data, like:</p>
@@ -60,6 +64,72 @@
       <li>Audio (sound over time)</li>
       <li>Video frames (sequence of images)</li>
     </ul>
+  </div>
+  <div class="section" id="importance_seq_models">
+    <h2>Importance of Sequence Models</h2>
+    <p>Imagine you’re watching a movie where a character is introduced, faces challenges, or experiences important events. As the story unfolds, each scene makes sense because you remember what happened before—every part depends on the order and what came earlier. Now imagine watching the same movie with scenes played randomly out of order; you’d be confused because the sequence is broken. This shows how stories—and many real-life things—happen in a sequence where the order of events matters.</p>
+    <p>Similarly, if you want to predict tomorrow’s weather, just knowing today’s temperature isn’t enough. You need to consider temperatures from previous days since weather changes follow patterns over time. Sequence models are special machine learning tools designed to understand such ordered data. They capture dependencies across time or steps, using past information to make better predictions or generate meaningful results. Whether it’s predicting weather, understanding language, or analyzing stock prices, sequence models help us make sense of data that unfolds step by step.</p>
+    <div class="analogy" id="conclude_seq_model_importance">
+      Sequence models are crucial because they understand data where order matters. By remembering past information, they make accurate predictions and generate meaningful results in tasks like language, weather, and stock forecasting. Without them, machines can’t grasp context or sequence, making their outputs less reliable.
+    </div>
+    <h3>Problems with Traditional Models:</h3>
+    <ol>
+      <li><b>No Memory of Past Inputs:</b><br>Traditional models treat every input as independent. They don’t remember what came before. So, if you give them a sentence, they don’t understand the relationship between words.</li>
+      <li><b>Ignore Order of Data:</b><br>Order matters a lot in sequences (like sentences or time-series). Traditional models don’t consider the order — they just see a bag of words or numbers, losing important context.</li>
+      <li><b>Fail on Contextual Meaning:</b><br>Because they don’t remember or understand order, traditional models often give wrong predictions or outputs that don’t make sense. For example, they can’t tell the difference between “The cat chased the dog” and “The dog chased the cat.”</li>
+      <li><b>Poor Performance on Time-Dependent Tasks:</b><br>Tasks like speech recognition, language translation, or stock forecasting require understanding how data evolves over time. Traditional models struggle here because they can’t capture temporal patterns.</li>
+    </ol>
+    <h3>Simple Examples:</h3>
+    <p>Suppose you want to predict the next word after “I am going to the…”</p>
+    <ul>
+      <li>A traditional model might randomly guess because it doesn’t know the previous words’ context.</li>
+      <li>A sequence model understands the flow and predicts something meaningful like “market” or “school.”</li>
+    </ul>
+    <!-- Section: table -->
+    <h3>Comparison Table between Sequence model and traditional model:</h3>
+    <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; border-radius: 12px; overflow: hidden; border-color: #ddd;">
+      <thead style="background-color: #f2f2f2;">
+        <tr>
+          <th style="border: 1px solid #ddd;">Feature</th>
+          <th style="border: 1px solid #ddd;">Traditional Models</th>
+          <th style="border: 1px solid #ddd;">Sequence Models</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="border: 1px solid #ddd;"><strong>Memory of Past Inputs</strong></td>
+          <td style="border: 1px solid #ddd;">No memory; treats inputs independently</td>
+          <td style="border: 1px solid #ddd;">Remembers previous inputs (context)</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd;"><strong>Order Awareness</strong></td>
+          <td style="border: 1px solid #ddd;">Ignores order; treats data as a bag</td>
+          <td style="border: 1px solid #ddd;">Captures and uses the order of data</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd;"><strong>Context Understanding</strong></td>
+          <td style="border: 1px solid #ddd;">Poor; can’t understand meaning from order</td>
+          <td style="border: 1px solid #ddd;">Good; understands meaning from sequence</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd;"><strong>Use Case Suitability</strong></td>
+          <td style="border: 1px solid #ddd;">Works for independent data points</td>
+          <td style="border: 1px solid #ddd;">Designed for sequential/time-series data</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd;"><strong>Prediction Quality</strong></td>
+          <td style="border: 1px solid #ddd;">Often random or irrelevant predictions</td>
+          <td style="border: 1px solid #ddd;">Accurate, context-aware predictions</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd;"><strong>Example</strong></td>
+          <td style="border: 1px solid #ddd;">Predicting next word blindly</td>
+          <td style="border: 1px solid #ddd;">Predicting next word based on previous words</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Explaination:</h3>
+    <p>Traditional models look at each data point alone, ignoring what came before, so they miss important context and order. Sequence models, on the other hand, remember and use past information to understand patterns and make better predictions. This is why sequence models work well for things like language, speech, and time-series data where order and context are crucial.</p>
   </div>
   <a class="button" id="printButton" onclick="hideTemporarily(); window.print()">Download</a>
   <script>
