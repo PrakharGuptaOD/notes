@@ -12,6 +12,11 @@
         border-radius: 4px;
         transition: background 0.3s ease;
       }
+      button:hover{
+        background: #555;
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      }
   </style>
   <title>Sequence Models</title>
   <style>
@@ -56,6 +61,17 @@
       <li>Video frames (sequence of images)</li>
     </ul>
   </div>
-  <button id="printButton" onclick="window.print()">🖨️ Print this Page</button>
+  <button id="printButton" onclick="hideTemporarily(); window.print()">Download</button>
+  <script>
+    function hideTemporarily() {
+      const element = document.getElementById("message");
+      element.style.display = "none";  // Hide the element
+
+      // Show it again after 3 seconds (3000 milliseconds)
+      setTimeout(() => {
+        element.style.display = "block";
+      }, 2000);
+    }
+  </script>
 </body>
 </html>
