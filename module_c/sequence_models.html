@@ -47,6 +47,23 @@
         padding: 10px; 
         overflow-x: auto; 
       }
+      table{
+        border-collapse: collapse;
+        width: 80%;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+      th, td{
+        text-align: left;
+        padding: 16px;
+        border: 1px solid #ddd;
+      }
+      th{
+        background-color: #f9f9f9;
+        font-weight: bold;
+      }
   </style>
   <title>Sequence Models</title>
 </head>
@@ -104,51 +121,75 @@
     </ul>
     <!-- Section: table -->
     <h3>Comparison Table between Sequence model and traditional model:</h3>
-    <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; border-radius: 12px; overflow: hidden; border-color: #ddd;">
-      <thead style="background-color: #f2f2f2;">
+    <table>
+      <thead>
         <tr>
-          <th style="border: 1px solid #ddd;">Feature</th>
-          <th style="border: 1px solid #ddd;">Traditional Models</th>
-          <th style="border: 1px solid #ddd;">Sequence Models</th>
+          <th>Feature</th>
+          <th>Traditional Models</th>
+          <th>Sequence Models</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td style="border: 1px solid #ddd;"><strong>Memory of Past Inputs</strong></td>
-          <td style="border: 1px solid #ddd;">No memory; treats inputs independently</td>
-          <td style="border: 1px solid #ddd;">Remembers previous inputs (context)</td>
+          <td><strong>Memory of Past Inputs</strong></td>
+          <td>No memory; treats inputs independently</td>
+          <td>Remembers previous inputs (context)</td>
         </tr>
         <tr>
-          <td style="border: 1px solid #ddd;"><strong>Order Awareness</strong></td>
-          <td style="border: 1px solid #ddd;">Ignores order; treats data as a bag</td>
-          <td style="border: 1px solid #ddd;">Captures and uses the order of data</td>
+          <td><strong>Order Awareness</strong></td>
+          <td>Ignores order; treats data as a bag</td>
+          <td>Captures and uses the order of data</td>
         </tr>
         <tr>
-          <td style="border: 1px solid #ddd;"><strong>Context Understanding</strong></td>
-          <td style="border: 1px solid #ddd;">Poor; can’t understand meaning from order</td>
-          <td style="border: 1px solid #ddd;">Good; understands meaning from sequence</td>
+          <td><strong>Context Understanding</strong></td>
+          <td>Poor; can’t understand meaning from order</td>
+          <td>Good; understands meaning from sequence</td>
         </tr>
         <tr>
-          <td style="border: 1px solid #ddd;"><strong>Use Case Suitability</strong></td>
-          <td style="border: 1px solid #ddd;">Works for independent data points</td>
-          <td style="border: 1px solid #ddd;">Designed for sequential/time-series data</td>
+          <td><strong>Use Case Suitability</strong></td>
+          <td>Works for independent data points</td>
+          <td>Designed for sequential/time-series data</td>
         </tr>
         <tr>
-          <td style="border: 1px solid #ddd;"><strong>Prediction Quality</strong></td>
-          <td style="border: 1px solid #ddd;">Often random or irrelevant predictions</td>
-          <td style="border: 1px solid #ddd;">Accurate, context-aware predictions</td>
+          <td><strong>Prediction Quality</strong></td>
+          <td>Often random or irrelevant predictions</td>
+          <td>Accurate, context-aware predictions</td>
         </tr>
         <tr>
-          <td style="border: 1px solid #ddd;"><strong>Example</strong></td>
-          <td style="border: 1px solid #ddd;">Predicting next word blindly</td>
-          <td style="border: 1px solid #ddd;">Predicting next word based on previous words</td>
+          <td><strong>Example</strong></td>
+          <td>Predicting next word blindly</td>
+          <td>Predicting next word based on previous words</td>
         </tr>
       </tbody>
     </table>
     <h3>Explaination:</h3>
     <p>Traditional models look at each data point alone, ignoring what came before, so they miss important context and order. Sequence models, on the other hand, remember and use past information to understand patterns and make better predictions. This is why sequence models work well for things like language, speech, and time-series data where order and context are crucial.</p>
+    <h2>Real Life examples of Sequence Models:</h2>
+    <table>
+      <tr>
+        <th>Example</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Google Translate</td>
+        <td>Automatically translates full sentences between languages.</td>
+      </tr>
+      <tr>
+        <td>Alexa/Siri</td>
+        <td>Understands and responds to spoken commands using speech-to-text.</td>
+      </tr>
+      <tr>
+        <td>Stock Market Prediction</td>
+        <td>Forecasts stock prices by analyzing historical trends.</td>
+      </tr>
+      <tr>
+        <td>Chatbots</td>
+        <td>Generates responses in customer service chats based on user input history.</td>
+      </tr>
+    </table>
   </div>
   <a class="button" id="printButton" onclick="hideTemporarily(); window.print()">Download</a>
+  <a class="button">Next -></a>
   <script>
     function hideTemporarily() {
       const element = document.getElementById("printButton");
