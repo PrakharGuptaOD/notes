@@ -49,6 +49,7 @@
         overflow-x: auto; 
       }
       table{
+        display: block;
         border-collapse: collapse;
         width: 80%;
         border: 1px solid #ddd;
@@ -188,11 +189,56 @@
       </tr>
     </table>
   </div>
-  <a class="button" id="printButton" onclick="hideTemporarily(); window.print()">Download</a>
-  <a class="button">Next -></a>
+  <div class="section" id="sequence_models_types">
+    <h2>Types of Sequence Models</h2>
+    <p>There are different types of sequence models like Autoregressive models, Markov models, Hidden Markov models, etc. We will learn about them in detail but let's have a glimpse of Autoregressive Model and Markov Model</p>
+    <h3>Autoregressive Models</h3>
+    <h4>What are they?</h4>
+    <p>Autoregressive models are a type of sequence model where the current value depends directly on several previous values in the sequence. Think of it like predicting today’s weather by looking at the weather of the past few days, assuming the recent past influences today.</p>
+    <p>Mathematically, it looks like this:</p>
+    <center><b><p>X<sub>t</sub> = ϕ<sub>1</sub>X<sub>t-1</sub> + ϕ<sub>2</sub>X<sub>t-2</sub> + . . . + ϵ<sub>t</sub></p></b></center>
+    <p>Here,<b> X<sub>t</sub> </b>(today's value) is predicted using past values <b></sub>X<sub>t-1</sub>, </sub>X<sub>t-2</sub>, . . .</b>, weghted by some coefficient <b>ϕ</b> plus some random noise <b>ϵ<sub>t</sub></b>.</p>
+    <h4>Analogy</h4>
+    <p>Imagine you’re baking a layered cake, where the flavor of the current layer depends on the flavors of the last few layers you made. Each new layer “remembers” and is influenced by the taste of previous layers. The more layers you consider, the more complex and nuanced your cake’s flavor.</p>
+    <p>Similarly, an AR model predicts the current data point by “tasting” or considering a fixed number of previous points.</p>
+    <h4>Use Cases:</h4>
+    <ul>
+      <li>Stock prices, where today’s price depends on prices in the past few days.</li>
+      <li>Temperature forecasting using past days’ temperatures.</li>
+      <li>Sales forecasting based on recent sales data.</li>
+    </ul>
+    <h4>Limitations:</h4>
+    <ul>
+      <li>It only looks backward a fixed number of steps; it can’t easily capture very long-term patterns or outside influences.</li>
+      <li>Like a cake recipe that only tastes the last few layers, it might miss a secret ingredient added much earlier.</li>
+    </ul>
+    <h3>Markov Models</h3>
+    <h4>What are they?</h4>
+    <p>Markov models are another type of sequence model that make a strong simplification: the future depends only on the current state, not on the whole past.</p>
+    <p>For example, in weather prediction, a Markov model assumes that tomorrow’s weather depends only on today’s weather, not on any earlier days.</p>
+    <h3>Analogy</h3>
+    <p>Think of playing a board game where your next move depends only on the current position of your piece, not how you arrived there. You decide what to do next just by looking at where you are right now, ignoring the history.</p>
+    <p>This property — “the future depends only on the present” — is called the Markov property.</p>
+    <h4>Use Cases:</h4>
+    <ul>
+      <li>Text generation where the next word depends mostly on the current word or state.</li>
+      <li>Speech recognition where the current sound predicts the next sound.</li>
+      <li>Simple decision processes where only the current situation matters.</li>
+    </ul>
+    <h4>Limitations:</h4>
+    <ul>
+      <li>Because it ignores history beyond the current state, it can miss important patterns that require memory of the past.</li>
+      <li>Like in the board game analogy, sometimes knowing the moves you made earlier helps make better decisions, but Markov models ignore that.</li>
+    </ul>
+  </div>
+  <div class="section" id="end">
+    <P>Next up, we will learn about them ii detail!</P>
+  </div>
+  <a class="button" id="Button" onclick="hideTemporarily(); window.print()">Download</a>
+  <a class="button" id="Button">Next -></a>
   <script>
     function hideTemporarily() {
-      const element = document.getElementById("printButton");
+      const element = document.getElementById("Button");
       element.style.display = "none";  // Hide the element
 
       // Show it again after 3 seconds (3000 milliseconds)
