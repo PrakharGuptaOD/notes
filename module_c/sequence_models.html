@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-      button{
+      .button{
         text-decoration: none;
         color: #fff;
         background: #333;
@@ -12,7 +12,7 @@
         border-radius: 4px;
         transition: background 0.3s ease;
       }
-      button:hover{
+      .button:hover{
         background: #555;
         transform: translateY(-5px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -61,7 +61,7 @@
       <li>Video frames (sequence of images)</li>
     </ul>
   </div>
-  <button id="printButton" onclick="hideTemporarily(); window.print()">Download</button>
+  <a class="button" id="printButton" onclick="hideTemporarily(); window.print()">Download</a>
   <script>
     function hideTemporarily() {
       const element = document.getElementById("printButton");
